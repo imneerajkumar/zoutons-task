@@ -9,7 +9,8 @@ function Header() {
   const [show, setShow] = useState(false);
   const [tab, setTab] = useState("login");
   const [user, setUser] = useState({});
-  const url = "http://localhost:5000/user";
+  // const url = "http://localhost:5000/user";
+  const url = "https://zoutons-task.onrender.com/user";
 
   const handleLogin = async (formData) => {
     try {
