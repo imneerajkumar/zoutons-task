@@ -42,12 +42,14 @@ function Header() {
           </a>
         </div>
         <div className="header-right">
-          {user ? (
+          {!user?.token ? (
             <button className="button login-btn" onClick={() => setShow(true)}>
               LOGIN
             </button>
           ) : (
-            <button className="button login-btn">LOGOUT</button>
+            <button className="button login-btn" onClick={() => setUser({})}>
+              LOGOUT
+            </button>
           )}
           <div className="button country">
             <p>INDIA</p>
