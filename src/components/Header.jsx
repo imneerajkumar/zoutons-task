@@ -9,28 +9,27 @@ function Header() {
   const [show, setShow] = useState(false);
   const [tab, setTab] = useState("login");
   const [user, setUser] = useState({});
-  // const url = "http://localhost:5000/user";
-  const url = "https://zoutons-task.onrender.com/user";
+  const url = process.env.API_URL;
 
   const handleLogin = async (formData) => {
     try {
-      const response = await axios.post(`${url}/login`, formData);
+      const response = await axios.post(`${url}/user/login`, formData);
       setUser(response.data);
       setShow(false);
       alert(`Welcome ${response?.data?.name} You are Logged In.`);
     } catch (error) {
-      alert(error.message);
+      alert(error.response.data);
     }
   };
 
   const handleSignup = async (formData) => {
     try {
-      const response = await axios.post(`${url}/register`, formData);
+      const response = await axios.post(`${url}/user/register`, formData);
       setUser(response?.data);
       setShow(false);
       alert(`Welcome ${response?.data?.name} You are registered.`);
     } catch (error) {
-      alert(error.message);
+      alert(error.response.data);
     }
   };
 
