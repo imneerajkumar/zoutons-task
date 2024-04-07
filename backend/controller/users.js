@@ -21,7 +21,8 @@ const userRegister = async (req, res) => {
     });
     await newUser.save();
 
-    res.status(201).send("User registered successfully");
+    const token = jwt.sign({ email: newUser.email }, "secret_key");
+    res.status(200).send({ token: token, name: user.name });
   } catch (error) {
     console.error("Error registering user:", error);
     res.status(500).send("Internal Server Error");
@@ -43,7 +44,7 @@ const userLogin = async (req, res) => {
     }
 
     const token = jwt.sign({ email: user.email }, "secret_key");
-    res.status(200).json({ token });
+    res.status(200).send({ token: token, name: user.name });
   } catch (error) {
     console.error("Error logging in:", error);
     res.status(500).send("Internal Server Error");
