@@ -14,5 +14,5 @@
 ## Start Frontend
 
 1. `npm install`
-2. `Create .env file and add API_URL`
+2. `In .env file replace API_URL with http://localhost:5000`
 3. `npm run dev`
